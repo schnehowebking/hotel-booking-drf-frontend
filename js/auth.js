@@ -18,13 +18,13 @@ function registerUser() {
     .then(response => response.json())
     .then(data => {
         console.log('User registered successfully:', data);
-        // Optionally, redirect to another page or display a success message
     })
     .catch(error => {
         console.error('Error registering user:', error);
-        // Handle registration errors (e.g., display error message to the user)
+        
     });
 }
+
 
 // Function to login a user
 function loginUser(event) {
@@ -34,28 +34,33 @@ function loginUser(event) {
     const password = document.getElementById('loginPassword').value;
 
     if (username && password) {
-        fetch('https://isthotelbookingdrf.onrender.com/account/login', {
+        fetch('https://isthotelbookingdrf.onrender.com/account/login/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ username, password }),
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to login');
+            }
+            return response.json();
+        })
         .then(data => {
             console.log('User logged in successfully:', data);
             if (data.token && data.user_id) {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('user_id', data.user_id);
-                // Optionally, redirect to another page or display a success message
             }
         })
         .catch(error => {
             console.error('Error logging in:', error);
-            // Handle login errors (e.g., display error message to the user)
+            
         });
     }
 }
+
 
 // Function to logout the current user
 function logoutUser() {
@@ -71,10 +76,9 @@ function logoutUser() {
         console.log('User logged out successfully');
         localStorage.removeItem('token');
         localStorage.removeItem('user_id');
-        // Optionally, redirect to another page or display a logout confirmation message
+      
     })
     .catch(error => {
         console.error('Error logging out:', error);
-        // Handle logout errors (e.g., display error message to the user)
     });
 }
