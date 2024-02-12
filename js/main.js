@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <ul class="dropdown-menu" aria-labelledby="userDropdown">
                         <li><a class="dropdown-item" href="#">Dashboard</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#" onclick="logoutUser()">Logout</a></li>
+                        <li><a class="dropdown-item" onclick="logoutUser()">Logout</a></li>
                     </ul>
                 </div>
             </div>
