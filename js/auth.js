@@ -51,9 +51,7 @@ function loginUser(event) {
             if (data.token && data.user_id) {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('user_id', data.user_id);
-                
-                // Redirect to profile page
-                window.location.href = 'profile.html'; // Assuming 'profile.html' is the correct path
+                window.location.href = 'profile.html'; 
             }
         })
         .catch(error => {
