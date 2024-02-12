@@ -489,3 +489,9 @@
     padding-right: 0;
     border-right: none;
 }
+
+.footer {
+    position: relative;
+    margin-top: -23px;
+    padding-top: 180px;
+}
